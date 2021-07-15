@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css?family={fontFamily}:100,300,400,500,700,900&display=swap');
+@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro: 400, 300);
+
+* {
+  font: normal 76px/1 {{fontFamily}}, Helvetica, sans-serif;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+
+.event-dashboard {
+  background-color: {{dashboardBackgroundColor}};
+}
+
+.title {
+  color: {{titleColor}};
+  font-size: {{titleFontSize}}px;
+  text-align: center;
+}
+
+.container {
+  display:flex;
+  justify-content: flex-start;
+  align-content: flex-start;
+}
+
+.event-title {
+  width: 200px;
+  text-align: right;
+  margin-right: 5px;
+  color: {{eventColor}};
+  font-size: {{fontSize}}px;
+}
+
+.event-amount {
+  color: {{eventColor}};
+  font-size: {{fontSize}}px;
+}
+
+.bean-title {
+  width: 200px;
+  text-align: right;
+  margin-right: 5px;
+  color: {{beanColor}};
+  font-size: {{fontSize}}px;
+}
+
+.bean-amount {
+  color: {{beanColor}};
+  font-size: {{fontSize}}px;
+}
+
+.bean-event {
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  color: {{beanColor}};
+  font-size: {{tickerSize}}px;
+}
+
+.giveaway-title {
+  width: 300px;
+  text-align: right;
+  margin-right: 5px;
+  color: {{giveawayColor}};
+  font-size: {{fontSize}}px;
+}
+
+.giveaway-amount {
+  color: {{giveawayColor}};
+  font-size: {{fontSize}}px;
+}
+
+.giveaway-event {
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  color: {{giveawayColor}};
+  font-size: {{tickerSize}}px;
+}
+
+.milestone-event {
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  color: {{titleColor}};
+  font-size: {{tickerSize}}px;
+}
+
+.divider-color > * + * {
+  border-color: {{dividerColor}} ;
+}
+
+/* The animation starts here */
+.animated-box {
+  border-radius: {{animatedBorderRadius}}px;
+}
+
+.animated-box h1 {
+  font-weight: 200;
+  font-size: 40px;
+  text-transform: uppercase;
+}
+
+.animated-box p {
+  font-weight: 200;
+}
+
+.animated-box {
+  position: relative;
+  border-radius: {{animatedBorderRadius}}px;
+}
+
+.animated-box:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: {{animatedBorderRadius}}px;
+  background: linear-gradient({{animatedBorderAngle}}deg, {{animatedBorderColor}}, {{animatedBorderColorTwo}}, {{animatedBorderColorThree}});
+  clip-path: polygon(0% 100%, {{animatedBorderWidth}}px 100%, {{animatedBorderWidth}}px {{animatedBorderWidth}}px, calc(100% - {{animatedBorderWidth}}px) {{animatedBorderWidth}}px, calc(100% - {{animatedBorderWidth}}px) calc(100% - {{animatedBorderWidth}}px), {{animatedBorderWidth}}px calc(100% - {{animatedBorderWidth}}px), {{animatedBorderWidth}}px 100%, 100% 100%, 100% 0%, 0% 0%);
+}
+
+.animated-box-100:after {
+  background-size: 100% 100%;
+}
+
+.animated-box-300:after {
+  background-size: 300% 300%;
+}
+
+.animated-box.in:after {
+  animation: frame-enter 1s forwards ease-in-out reverse, gradient-animation {{animationDuration}}s ease-in-out infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 15% 0%;
+  }
+  50% {
+    background-position: 85% 100%;
+  }
+  100% {
+    background-position: 15% 0%;
+  }
+}
+
+@keyframes frame-enter {
+  0% {
+    clip-path: polygon(0% 100%, {{animatedBorderWidth}}px 100%, {{animatedBorderWidth}}px {{animatedBorderWidth}}px, calc(100% - {{animatedBorderWidth}}px) {{animatedBorderWidth}}px, calc(100% - {{animatedBorderWidth}}px) calc(100% - {{animatedBorderWidth}}px), {{animatedBorderWidth}}px calc(100% - {{animatedBorderWidth}}px), {{animatedBorderWidth}}px 100%, 100% 100%, 100% 0%, 0% 0%);
+  }
+  25% {
+    clip-path: polygon(0% 100%, {{animatedBorderWidth}}px 100%, {{animatedBorderWidth}}px {{animatedBorderWidth}}px, calc(100% - {{animatedBorderWidth}}px) {{animatedBorderWidth}}px, calc(100% - {{animatedBorderWidth}}px) calc(100% - {{animatedBorderWidth}}px), calc(100% - {{animatedBorderWidth}}px) calc(100% - {{animatedBorderWidth}}px), calc(100% - {{animatedBorderWidth}}px) 100%, 100% 100%, 100% 0%, 0% 0%);
+  }
+  50% {
+    clip-path: polygon(0% 100%, {{animatedBorderWidth}}px 100%, {{animatedBorderWidth}}px {{animatedBorderWidth}}px, calc(100% - {{animatedBorderWidth}}px) {{animatedBorderWidth}}px, calc(100% - {{animatedBorderWidth}}px) {{animatedBorderWidth}}px, calc(100% - {{animatedBorderWidth}}px) {{animatedBorderWidth}}px, calc(100% - {{animatedBorderWidth}}px) {{animatedBorderWidth}}px, calc(100% - {{animatedBorderWidth}}px) {{animatedBorderWidth}}px, 100% 0%, 0% 0%);
+  }
+  75% {
+    -webkit-clip-path: polygon(0% 100%, {{animatedBorderWidth}}px 100%, {{animatedBorderWidth}}px {{animatedBorderWidth}}px, {{animatedBorderWidth}}px {{animatedBorderWidth}}px, {{animatedBorderWidth}}px {{animatedBorderWidth}}px, {{animatedBorderWidth}}px {{animatedBorderWidth}}px, {{animatedBorderWidth}}px {{animatedBorderWidth}}px, {{animatedBorderWidth}}px {{animatedBorderWidth}}px, {{animatedBorderWidth}}px 0%, 0% 0%);
+  }
+  100% {
+    -webkit-clip-path: polygon(0% 100%, {{animatedBorderWidth}}px 100%, {{animatedBorderWidth}}px 100%, {{animatedBorderWidth}}px 100%, {{animatedBorderWidth}}px 100%, {{animatedBorderWidth}}px 100%, {{animatedBorderWidth}}px 100%, {{animatedBorderWidth}}px 100%, {{animatedBorderWidth}}px 100%, 0% 100%);
+  }
+}
