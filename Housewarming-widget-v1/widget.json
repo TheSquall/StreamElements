@@ -1,0 +1,214 @@
+{
+  "subCommand": {
+    "type": "string",
+    "label": "Add Sub Command",
+    "value": "!sub+",
+    "group": "Commands"
+  },
+  "bitsCommand": {
+    "type": "string",
+    "label": "Add Bits Command",
+    "value": "!bits+",
+    "group": "Commands"
+  },
+  "donateCommand": {
+    "type": "string",
+    "label": "Add Donation Command",
+    "value": "!donate+",
+    "group": "Commands"
+  },
+  "addBeanCommand": {
+    "type": "string",
+    "label": "Add Bean Command",
+    "value": "!bean+",
+    "group": "Commands"
+  },
+  "eatBeanCommand": {
+    "type": "string",
+    "label": "Bean Eaten Command",
+    "value": "!eaten+",
+    "group": "Commands"
+  },
+  "resetCommand": {
+    "type": "string",
+    "label": "Reset All Values Command",
+    "value": "!homereset",
+    "group": "Commands"
+  },
+  "allowVIPS": {
+    "type": "dropdown",
+    "label": "Allow VIPs to use commands",
+    "value": "no",
+    "options": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "group": "Commands"
+  },
+  "pointsT1Sub": {
+    "type": "number",
+    "label": "Points per T1 Sub",
+    "value": "500",
+    "group": "Points"
+  },
+  "pointsT2Sub": {
+    "type": "number",
+    "label": "Points per T2 Sub",
+    "value": "1000",
+    "group": "Points"
+  },
+  "pointsT3Sub": {
+    "type": "number",
+    "label": "Points per T3 Sub",
+    "value": "2500",
+    "group": "Points"
+  },
+  "pointsBit": {
+    "type": "number",
+    "label": "Points per Bit",
+    "value": "1",
+    "group": "Points"
+  },
+  "pointsDonate": {
+    "type": "number",
+    "label": "Points per Dollar",
+    "value": "100",
+    "group": "Points"
+  },
+  "pointsPerBean": {
+    "type": "number",
+    "label": "Points for a Bean",
+    "value": "2500",
+    "group": "Points"
+  },
+  "dashboardBackgroundColor": {
+    "type": "colorpicker",
+    "label": "Background Color",
+    "value": "rgba(0, 0, 0, 0.5)",
+    "group": "Theming"
+  },
+  "fontFamily": {
+    "type": "googleFont",
+    "label": "Font",
+    "value": "Roboto",
+    "group": "Theming"
+  },
+  "titleColor": {
+    "type": "colorpicker",
+    "label": "Title Color",
+    "value": "rgb(255, 255, 255)",
+    "group": "Theming"
+  },
+  "titleFontSize": {
+    "type": "number",
+    "label": "Title Font Size",
+    "value": "24",
+    "group": "Theming"
+  },
+  "eventColor": {
+    "type": "colorpicker",
+    "label": "Event Color",
+    "value": "rgb(255, 255, 255)",
+    "group": "Theming"
+  },
+  "beanColor": {
+    "type": "colorpicker",
+    "label": "Bean Color",
+    "value": "rgb(255, 255, 255)",
+    "group": "Theming"
+  },
+  "giveawayColor": {
+    "type": "colorpicker",
+    "label": "Giveaway Color",
+    "value": "rgb(255, 255, 255)",
+    "group": "Theming"
+  },
+  "fontSize": {
+    "type": "number",
+    "label": "Font Size",
+    "value": "16",
+    "group": "Theming"
+  },
+  "tickerSize": {
+    "type": "number",
+    "label": "Ticker Font Size",
+    "value": "12",
+    "group": "Theming"
+  },
+  "animationDuration": {
+    "type": "slider",
+    "label": "Animate Duration (sec)",
+    "value": "4",
+    "min": "1",
+    "max": "10",
+    "step": 0.5,
+    "group": "Theming - Border"
+  },
+  "animatedBorderColor": {
+    "type": "colorpicker",
+    "label": "Border Color One",
+    "value": "rgb(255, 255, 255)",
+    "group": "Theming - Border"
+  },
+  "animatedBorderColorTwo": {
+    "type": "colorpicker",
+    "label": "Border Color Two",
+    "value": "rgb(248, 203, 248)",
+    "group": "Theming - Border"
+  },
+  "animatedBorderColorThree": {
+    "type": "colorpicker",
+    "label": "Border Color Three",
+    "value": "rgb(255, 0, 255)",
+    "group": "Theming - Border"
+  },
+  "animatedBorderAngle": {
+    "type": "number",
+    "label": "Border Angle",
+    "value": 0,
+    "group": "Theming - Border"
+  },
+  "animatedBorderWidth": {
+    "type": "number",
+    "label": "Enter a border width:",
+    "value": 10,
+    "group": "Theming - Border"
+  },
+  "animatedBorderRadius": {
+    "type": "number",
+    "label": "Enter a border radius:",
+    "value": 5,
+    "group": "Theming - Border"
+  },
+  "dividerColor": {
+    "type": "colorpicker",
+    "label": "Divider Color",
+    "value": "rgba(255, 255, 255, 1)",
+    "group": "Theming - Divider"
+  },
+  "dividerType": {
+    "type": "dropdown",
+    "label": "Choose a divider type:",
+    "value": "divide-dashed",
+    "options": {
+      "divide-solid": "Solid Divider",
+      "divide-dashed": "Dashed Divider",
+      "divide-dotted": "Dotted Divider",
+      "divide-double": "Double Divider",
+      "divide-none": "No Divider"
+    },
+    "group": "Theming - Divider"
+  },
+  "dividerWidth": {
+    "type": "dropdown",
+    "label": "Choose a divider width:",
+    "value": "divide-y",
+    "options": {
+      "divide-y": "1px",
+      "divide-y-2": "2px",
+      "divide-y-4": "4px",
+      "divide-y-8": "8px"
+    },
+    "group": "Theming - Divider"
+  }
+}
