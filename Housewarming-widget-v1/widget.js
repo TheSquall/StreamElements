@@ -10,9 +10,10 @@ let userState = {
 };
 
 let config = {};
+config.rates = {};
+config.points = {};
 
 // CONVERSION RATES FOR DONATIONS (EUR + GBP)
-config.rates = { };
 fetch('https://api.exchangerate-api.com/v4/latest/USD').then(response => response.json()).then(data => { 
   config.rates.gbp = data.rates.GBP;
   config.rates.eur = data.rates.EUR;
@@ -38,9 +39,6 @@ config.milestones = [
   "50 Subs: Decorate My Wall Stream",
   "100 Subs: Chat-Suggested Meal Cooking Stream"
 ];
-  
-
-
 
 /*******************************************************
  *                PERMISSON FUNCTIONS                  *
@@ -87,32 +85,13 @@ const modOrVIPPermission = (configuration) => {
   return configuration.allowVIPS ? PERMISSION_VIP : PERMISSION_MOD;
 };
 
-// WIDGET LOAD
+/*******************************************************
+ *                    WIDGET LOAD                      *
+ *******************************************************/
+
 window.addEventListener("onWidgetLoad", function (obj) {
   // Field data from Stream Elements from the overlay settings the user set
   const fieldData = obj.detail.fieldData;
-  // Get Variables from SE API per https://github.com/StreamElements/widgets/blob/master/CustomCode.md#se-api
-  SE_API.store.get('homeSubT1Counter').then(number => {
-    userState.subT1Counter = parseInt(number.value);
-  });
-  SE_API.store.get('homeSubT2Counter').then(number => {
-    userState.subT2Counter = parseInt(number.value);
-  });
-  SE_API.store.get('homeSubT3Counter').then(number => {
-    userState.subT3Counter = parseInt(number.value);
-  });
-  SE_API.store.get('homeBitCounter').then(number => {
-    userState.bitCounter = parseInt(number.value);
-  });
-  SE_API.store.get('homeDonateCounter').then(number => {
-    userState.donateCounter = Number(number.value);
-  });
-  SE_API.store.get('homeXTraCounter').then(number => {
-    userState.xtraCounter = parseInt(number.value);
-  });
-  SE_API.store.get('homeEatenCounter').then(number => {
-    userState.eatenCounter = parseInt(number.value);
-  });
   
   // Sets up all the commands for the widget
   config.commands = {
@@ -157,15 +136,9 @@ window.addEventListener("onWidgetLoad", function (obj) {
         userState,
       ]);
     },
-    "!glitchedmythos": (data) => {
-      runCommandWithPermission(PERMISSION_BROADCASTER, data, _glitchedMythos, [
-        data.text,
-      ]);
-    },
   };
 
   // Sets Point Counts for Beans
-  config.points = { };
   config.points.subT1 = fieldData["pointsT1Sub"];
   config.points.subT2 = fieldData["pointsT2Sub"];
   config.points.subT3 = fieldData["pointsT3Sub"];
@@ -176,13 +149,8 @@ window.addEventListener("onWidgetLoad", function (obj) {
   // Configuration based on user choices
   config.allowVIPS = fieldData["allowVIPS"] === "yes" ? true : false;
   
-  // Border Animation
-  $("#event-dashboard").addClass("animated-box");
-  $("#event-dashboard").addClass("in");
-  $("#event-dashboard").addClass("animated-box-300");
-  
-  // Update Initial Values after the SE API Gets are completed (500ms delay)
-  setTimeout(function() { updateText(userState) }, 500);
+  // Get Counter Values from SE_API and Update Widget Text
+  apiCounterGet();
 });
 
 // EVENTS AFTER LOAD
@@ -191,7 +159,7 @@ window.addEventListener("onEventReceived", function (obj) {
   const listener = obj.detail.listener;
   const data = obj["detail"]["event"];
   // Checks if Event is Subscriber, Cheer, or Message
-  if (obj.detail.listener === "subscriber-latest") {
+  if (obj.detail.listener === "subscriber-latest") { //IF SUBSCRIBER
     if (data.isCommunityGift) return;
     let subAmount = (data.bulkGifted) ? data.amount : 1;
     // Check Prime/Tier 1, Tier 2, Tier 3
@@ -202,10 +170,10 @@ window.addEventListener("onEventReceived", function (obj) {
     } else if (data.tier == "3000") {
       updateT3Subs(subAmount, userState);
     }
-  } else if (obj.detail.listener === "cheer-latest") {
+  } else if (obj.detail.listener === "cheer-latest") { //IF CHEER
     let cheerAmount = data.amount;
     updateBits(cheerAmount, userState);
-  } else if (obj.detail.listener === "message") {
+  } else if (obj.detail.listener === "message" && data.data.text.charAt(0)==="!") { //IF MESSAGE STARTING WITH !
     let givenCommand = data.data.text.split(" ")[0];
     if (config.commands[givenCommand.toLowerCase()]) {
       config.commands[givenCommand.toLowerCase()](data.data);
@@ -226,6 +194,35 @@ const updateVariables = (state) => {
   SE_API.store.set('homeDonateCounter', state.donateCounter);
   SE_API.store.set('homeXTraCounter', state.xtraCounter);
   SE_API.store.set('homeEatenCounter', state.eatenCounter);
+}
+
+// Get Variables from SE API per https://github.com/StreamElements/widgets/blob/master/CustomCode.md#se-api
+async function apiCounterGet(){
+  let promiseArray = [
+    SE_API.store.get('homeSubT1Counter').then(number => {
+      userState.subT1Counter = parseInt(number.value);
+    }),
+    SE_API.store.get('homeSubT2Counter').then(number => {
+      userState.subT2Counter = parseInt(number.value);
+    }),
+    SE_API.store.get('homeSubT3Counter').then(number => {
+      userState.subT3Counter = parseInt(number.value);
+    }),
+    SE_API.store.get('homeBitCounter').then(number => {
+      userState.bitCounter = parseInt(number.value);
+    }),
+    SE_API.store.get('homeDonateCounter').then(number => {
+      userState.donateCounter = Number(number.value);
+    }),
+    SE_API.store.get('homeXTraCounter').then(number => {
+      userState.xtraCounter = parseInt(number.value);
+    }),
+    SE_API.store.get('homeEatenCounter').then(number => {
+      userState.eatenCounter = parseInt(number.value);
+    })
+  ];
+  await Promise.all(promiseArray);
+  return updateText(userState);
 }
 
 // Update the Total Subs, Bits, and Donations
@@ -274,6 +271,7 @@ const _updateBeanCounter = (state) => {
   $("#bean-counter").html(totalBeans + state.xtraCounter - state.eatenCounter);
 }
 
+// Calculate Number of Giveaways at End of Stream
 const _updateGiveawayCounter = (state) => {
   let totalSubs = state.subT1Counter + state.subT2Counter + state.subT3Counter;
   let totalMoney = state.bitCounter / 100 + state.donateCounter;
@@ -290,7 +288,6 @@ const _updateGiveawayCounter = (state) => {
 /*******************************************************
  *                  COMMAND FUNCTIONS                  *
  *******************************************************/
-
 
 // Command for Adding Subs that may not have counted 
 // !sub+ [tier] [number] or !sub+ [number] if T1
@@ -389,4 +386,4 @@ setInterval(e => {
     $("#giveaway-event").html(config.giveaway[countb]).fadeIn(1000);
     $("#milestone-event").html(config.milestones[countc]).fadeIn(1000);
   }, 1500);
-}, 11500);
+}, 16500);
