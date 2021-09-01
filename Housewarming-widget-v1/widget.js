@@ -10,14 +10,14 @@ let userState = {
 };
 
 let config = {};
-config.rates = {};
 config.points = {};
 
-// CONVERSION RATES FOR DONATIONS (EUR + GBP)
+/*// CONVERSION RATES FOR DONATIONS (EUR + GBP)
+config.rates = {};
 fetch('https://api.exchangerate-api.com/v4/latest/USD').then(response => response.json()).then(data => { 
   config.rates.gbp = data.rates.GBP;
   config.rates.eur = data.rates.EUR;
-});
+});*/
 
 // Rotating Events
 config.event = [
@@ -26,18 +26,21 @@ config.event = [
   "Tier 3 Subs Count as 1 Bean",
   "2500 Bits for a Bean",
   "$25 Donation for a Bean",
-  "Hype Train is an Extra Bean"
+  "Hype Train is an Extra Bean",
+  "Level 5 Hype Completed is an Extra Bean"
 ]; 
 config.giveaway = [
   "Giveaway: $50 Steam Gift Card + 25 Dixper Packs",
-  "One Giveaway at 25 Subs",
-  "One Giveaway at 75, 125, etc. Subs",
-  "One Giveaway Every $100 Bits + Donation"
+  "First Giveaway at 25 Subs",
+  "One Giveaway Every 50 Subs After 25",
+  "One Giveaway Every $100 Bits+Donated",
+  "10 Dixper Packs for every $10 Donated"
 ];
 config.milestones = [
-  "One Gift Sub EVERY Phasmo Death",
+  "One Gift Sub EVERY Phasmo/GHC Death",
   "50 Subs: Decorate My Wall Stream",
-  "100 Subs: Chat-Suggested Meal Cooking Stream"
+  "100 Subs: Chat-Suggested Meal Cooking Stream",
+  "$1500 Bits+Donated: I Eat ALL Beans (ugh)"
 ];
 
 /*******************************************************
@@ -173,6 +176,9 @@ window.addEventListener("onEventReceived", function (obj) {
   } else if (obj.detail.listener === "cheer-latest") { //IF CHEER
     let cheerAmount = data.amount;
     updateBits(cheerAmount, userState);
+  } else if (obj.detail.listener === "tip-latest") { //IF TIP
+    let donationAmount = data.amount;
+    updateDonation(donationAmount, userState);
   } else if (obj.detail.listener === "message" && data.data.text.charAt(0)==="!") { //IF MESSAGE STARTING WITH !
     let givenCommand = data.data.text.split(" ")[0];
     if (config.commands[givenCommand.toLowerCase()]) {
@@ -199,27 +205,13 @@ const updateVariables = (state) => {
 // Get Variables from SE API per https://github.com/StreamElements/widgets/blob/master/CustomCode.md#se-api
 async function apiCounterGet(){
   let promiseArray = [
-    SE_API.store.get('homeSubT1Counter').then(number => {
-      userState.subT1Counter = parseInt(number.value);
-    }),
-    SE_API.store.get('homeSubT2Counter').then(number => {
-      userState.subT2Counter = parseInt(number.value);
-    }),
-    SE_API.store.get('homeSubT3Counter').then(number => {
-      userState.subT3Counter = parseInt(number.value);
-    }),
-    SE_API.store.get('homeBitCounter').then(number => {
-      userState.bitCounter = parseInt(number.value);
-    }),
-    SE_API.store.get('homeDonateCounter').then(number => {
-      userState.donateCounter = Number(number.value);
-    }),
-    SE_API.store.get('homeXTraCounter').then(number => {
-      userState.xtraCounter = parseInt(number.value);
-    }),
-    SE_API.store.get('homeEatenCounter').then(number => {
-      userState.eatenCounter = parseInt(number.value);
-    })
+    SE_API.store.get('homeSubT1Counter').then(number => { userState.subT1Counter = parseInt(number.value); }),
+    SE_API.store.get('homeSubT2Counter').then(number => { userState.subT2Counter = parseInt(number.value); }),
+    SE_API.store.get('homeSubT3Counter').then(number => { userState.subT3Counter = parseInt(number.value); }),
+    SE_API.store.get('homeBitCounter').then(number => { userState.bitCounter = parseInt(number.value); }),
+    SE_API.store.get('homeDonateCounter').then(number => { userState.donateCounter = Number(number.value); }),
+    SE_API.store.get('homeXTraCounter').then(number => { userState.xtraCounter = parseInt(number.value); }),
+    SE_API.store.get('homeEatenCounter').then(number => { userState.eatenCounter = parseInt(number.value); })
   ];
   await Promise.all(promiseArray);
   return updateText(userState);
@@ -232,6 +224,7 @@ const updateText = (state) => {
   $("#donate-counter").html("$" + parseFloat(state.donateCounter).toFixed(2));
   _updateBeanCounter(state);
   _updateGiveawayCounter(state);
+  _updateMilestones(state);
 }
 
 // Update # of Subs based on Tier (Prime/1, 2, 3)
@@ -251,10 +244,17 @@ const updateT3Subs = (subAmount, state) => {
   updateText(state);
 }
 
-// Update Bits Donated
+// Update Bits
 const updateBits = (cheerAmount, state) => {
   state.bitCounter += cheerAmount;
   SE_API.store.set('homeBitCounter', state.bitCounter);
+  updateText(state);
+}
+
+// Update Donation Amount
+const updateDonation = (donationAmount, state) => {
+  state.donateCounter += donationAmount;
+  SE_API.store.set('homeDonateCounter', state.donateCounter);
   updateText(state);
 }
 
@@ -279,10 +279,34 @@ const _updateGiveawayCounter = (state) => {
   if (totalSubs >= 25) {
     giveawaySubCounter++;
     totalSubs -= 25;
-    giveawaySubCounter += Math.floor(totalSubs/50);
+    giveawaySubCounter += Math.floor(totalSubs / 50);
   }
   let totalGiveaway = giveawaySubCounter + Math.floor(totalMoney / 100);
   $("#giveaway-counter").html(totalGiveaway);
+}
+
+// Update Milestones with "COMPLETED" if Done
+const _updateMilestones = (state) => {
+  let totalSubs = state.subT1Counter + state.subT2Counter + state.subT3Counter;
+  let totalMoney = state.bitCounter / 100 + state.donateCounter;
+  if (totalSubs >= 50) { //Check the 50 Gift Subs Milestone
+    if (config.milestones[1].split(" ").slice(-1)[0] === "(COMPLETED)") {
+    } else {
+      config.milestones[1] += " (COMPLETED)";
+    }
+  }
+  if (totalSubs >= 100) { //Check the 100 Gift Subs Milestone
+    if (config.milestones[2].split(" ").slice(-1)[0] === "(COMPLETED)") {
+    } else {
+      config.milestones[2] += " (COMPLETED)";
+    }
+  }
+  if (totalMoney >= 1500) { //Check $1500 Donation Milestone
+    if (config.milestones[3].split(" ").slice(-1)[0] === "(COMPLETED)") {
+    } else {
+      config.milestones[3] += " (COMPLETED)";
+    }
+  }
 }
 
 /*******************************************************
@@ -319,22 +343,11 @@ const _addBitsEvent = (data, state) => {
 }
 
 // Command for Adding Donations to the Widget
-// NOTE: I use StreamLabs for Donations, and therefore, they do NOT automatically count
 // !donate+ [currency symbol] [
 const _addDonationEvent = (data, state) => {
   let commandArgument = data.split(" ");
-  let actualAmount = commandArgument[1];
-  let donationAddition = 0;
-  if (actualAmount.charAt(0)==="$") {
-    donationAddition = actualAmount.substring(1);
-  } else if (actualAmount.charAt(0)==="£") {
-    donationAddition = actualAmount.substring(1) * convert.gbp;
-  } else if (actualAmount.charAt(0)==="€") {
-    donationAddition = actualAmount.substring(1) * convert.eur;
-  }
-  state.donateCounter += Number(donationAddition);
-  SE_API.store.set('homeDonateCounter', state.donateCounter);
-  updateText(state);
+  let actualAmount = Number(commandArgument[1]);
+  updateDonation(actualAmount, state);
 }
 
 // Command for Adding Extra Beans (e.g. Hype Trains)
