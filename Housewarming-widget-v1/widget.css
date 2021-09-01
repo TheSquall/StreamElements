@@ -58,7 +58,7 @@
 }
 
 .giveaway-title {
-  width: 300px;
+  width: 200px;
   text-align: right;
   margin-right: 5px;
   color: {{giveawayColor}};
