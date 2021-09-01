@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css?family={fontFamily}:100,300,400,500,700,900&display=swap');
+@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro: 400, 300);
+
+* {
+  font: normal 76px/1 {{fontFamily}}, Helvetica, sans-serif;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+
+.event-dashboard {
+  background-color: {{dashboardBackgroundColor}};
+}
+
+.title {
+  color: {{titleColor}};
+  font-size: {{titleFontSize}}px;
+  text-align: center;
+  width: 100%;
+}
+
+.container {
+  display:flex;
+  justify-content: flex-start;
+  align-content: flex-start;
+}
+
+.total-title {
+  width: 275px;
+  text-align: right;
+  margin-right: 5px;
+  color: {{eventColor}};
+  font-size: {{fontSize}}px;
+}
+
+.total-amount {
+  color: {{eventColor}};
+  font-size: {{fontSize}}px;
+}
+
+.spent-title {
+  width: 275px;
+  text-align: right;
+  margin-right: 5px;
+  color: {{beanColor}};
+  font-size: {{fontSize}}px;
+}
+
+.spent-amount {
+  color: {{beanColor}};
+  font-size: {{fontSize}}px;
+}
+
+.remain-title {
+  width: 275px;
+  text-align: right;
+  margin-right: 5px;
+  color: {{giveawayColor}};
+  font-size: {{fontSize}}px;
+}
+
+.remain-amount {
+  color: {{giveawayColor}};
+  font-size: {{fontSize}}px;
+}
+
+.poll-label {
+  width: 200px;
+  text-align: right;
+  margin-right: 5px;
+  color: {{beanColor}};
+  font-size: {{fontSize}}px;
+}
+
+.poll-amount {
+  color: {{giveawayColor}};
+  font-size: {{fontSize}}px;
+}
+
+.poll-winner {
+  color: #00FF00;
+  font-size: {{fontSize}}px;
+}
+
+.timer-title {
+  width: 225px;
+  text-align: right;
+  margin-right: 5px;
+  color: {{eventColor}};
+  font-size: {{fontSize}}px;
+}
+
+.timer-amount {
+  color: {{eventColor}};
+  font-size: {{fontSize}}px;
+}
+
+.divider-color > * + * {
+  border-color: {{dividerColor}} ;
+}
+
+/* The animation starts here */
+.animated-box {
+  border-radius: {{borderRadius}}px;
+}
+
+.animated-box h1 {
+  font-weight: 200;
+  font-size: 40px;
+  text-transform: uppercase;
+}
+
+.animated-box p {
+  font-weight: 200;
+}
+
+.animated-box {
+  position: relative;
+  border-radius: {{borderRadius}}px;
+}
+
+.animated-box:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: {{borderRadius}}px;
+  background: linear-gradient({{borderAngle}}deg, {{borderColor}}, {{borderColorTwo}}, {{borderColorThree}});
+  clip-path: polygon(0% 100%, {{borderWidth}}px 100%, {{borderWidth}}px {{borderWidth}}px, calc(100% - {{borderWidth}}px) {{borderWidth}}px, calc(100% - {{borderWidth}}px) calc(100% - {{borderWidth}}px), {{borderWidth}}px calc(100% - {{borderWidth}}px), {{borderWidth}}px 100%, 100% 100%, 100% 0%, 0% 0%);
+}
+
+.animated-box-100:after {
+  background-size: 100% 100%;
+}
+
+.animated-box-300:after {
+  background-size: 300% 300%;
+}
+
+.animated-box.in:after {
+  animation: frame-enter 1s forwards ease-in-out reverse, gradient-animation {{animationDuration}}s ease-in-out infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 15% 0%;
+  }
+  50% {
+    background-position: 85% 100%;
+  }
+  100% {
+    background-position: 15% 0%;
+  }
+}
+
+@keyframes frame-enter {
+  0% {
+    clip-path: polygon(0% 100%, {{borderWidth}}px 100%, {{borderWidth}}px {{borderWidth}}px, calc(100% - {{borderWidth}}px) {{borderWidth}}px, calc(100% - {{borderWidth}}px) calc(100% - {{borderWidth}}px), {{borderWidth}}px calc(100% - {{borderWidth}}px), {{borderWidth}}px 100%, 100% 100%, 100% 0%, 0% 0%);
+  }
+  25% {
+    clip-path: polygon(0% 100%, {{borderWidth}}px 100%, {{borderWidth}}px {{borderWidth}}px, calc(100% - {{borderWidth}}px) {{borderWidth}}px, calc(100% - {{borderWidth}}px) calc(100% - {{borderWidth}}px), calc(100% - {{borderWidth}}px) calc(100% - {{borderWidth}}px), calc(100% - {{borderWidth}}px) 100%, 100% 100%, 100% 0%, 0% 0%);
+  }
+  50% {
+    clip-path: polygon(0% 100%, {{borderWidth}}px 100%, {{borderWidth}}px {{borderWidth}}px, calc(100% - {{borderWidth}}px) {{borderWidth}}px, calc(100% - {{borderWidth}}px) {{borderWidth}}px, calc(100% - {{borderWidth}}px) {{borderWidth}}px, calc(100% - {{borderWidth}}px) {{borderWidth}}px, calc(100% - {{borderWidth}}px) {{borderWidth}}px, 100% 0%, 0% 0%);
+  }
+  75% {
+    -webkit-clip-path: polygon(0% 100%, {{borderWidth}}px 100%, {{borderWidth}}px {{borderWidth}}px, {{borderWidth}}px {{borderWidth}}px, {{borderWidth}}px {{borderWidth}}px, {{borderWidth}}px {{borderWidth}}px, {{borderWidth}}px {{borderWidth}}px, {{borderWidth}}px {{borderWidth}}px, {{borderWidth}}px 0%, 0% 0%);
+  }
+  100% {
+    -webkit-clip-path: polygon(0% 100%, {{borderWidth}}px 100%, {{borderWidth}}px 100%, {{borderWidth}}px 100%, {{borderWidth}}px 100%, {{borderWidth}}px 100%, {{borderWidth}}px 100%, {{borderWidth}}px 100%, {{borderWidth}}px 100%, 0% 100%);
+  }
+}
