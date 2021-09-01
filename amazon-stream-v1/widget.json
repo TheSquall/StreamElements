@@ -1,0 +1,190 @@
+{
+  "usedCommand": {
+    "type": "string",
+    "label": "Money Used Command",
+    "value": "!-",
+    "group": "Commands"
+  },
+  "addedCommand": {
+    "type": "string",
+    "label": "Money Added Command",
+    "value": "!+",
+    "group": "Commands"
+  },
+  "pollCommand": {
+    "type": "string",
+    "label": "Begin Poll Command",
+    "value": "!pollstart",
+    "group": "Commands"
+  },
+  "yesCommand": {
+    "type": "string",
+    "label": "Yes (Buy) Command",
+    "value": "!yes",
+    "group": "Commands"
+  },
+  "noCommand": {
+    "type": "string",
+    "label": "No (Don't Buy) Command",
+    "value": "!no",
+    "group": "Commands"
+  },
+  "saveCommand": {
+    "type": "string",
+    "label": "Save for Later Command",
+    "value": "!save",
+    "group": "Commands"
+  },
+  "resetCommand": {
+    "type": "string",
+    "label": "Reset All Values Command",
+    "value": "!amazonreset",
+    "group": "Commands"
+  },
+  "allowVIPS": {
+    "type": "dropdown",
+    "label": "Allow VIPs to use commands",
+    "value": "no",
+    "options": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "group": "Commands"
+  },
+  "pollTimerLength": {
+    "type": "number",
+    "label": "Poll Length (sec)",
+    "value": 150,
+    "group": "Options"
+  },
+  "hideTimerLength": {
+    "type": "number",
+    "label": "Hide Length (sec)",
+    "value": 45,
+    "group": "Options"
+  },
+  "dashboardBackgroundColor": {
+    "type": "colorpicker",
+    "label": "Background Color",
+    "value": "#22222288",
+    "group": "Theming"
+  },
+  "fontFamily": {
+    "type": "googleFont",
+    "label": "Font",
+    "value": "Righteous",
+    "group": "Theming"
+  },
+  "titleColor": {
+    "type": "colorpicker",
+    "label": "Title Color",
+    "value": "#00a6ff",
+    "group": "Theming"
+  },
+  "titleFontSize": {
+    "type": "number",
+    "label": "Title Font Size",
+    "value": 32,
+    "group": "Theming"
+  },
+  "eventColor": {
+    "type": "colorpicker",
+    "label": "Event Color",
+    "value": "#5c5cee",
+    "group": "Theming"
+  },
+  "beanColor": {
+    "type": "colorpicker",
+    "label": "Bean Color",
+    "value": "#b0d",
+    "group": "Theming"
+  },
+  "giveawayColor": {
+    "type": "colorpicker",
+    "label": "Giveaway Color",
+    "value": "#d3d3d3",
+    "group": "Theming"
+  },
+  "fontSize": {
+    "type": "number",
+    "label": "Font Size",
+    "value": 28,
+    "group": "Theming"
+  },
+  "animationDuration": {
+    "type": "slider",
+    "label": "Animate Duration (sec)",
+    "value": 5,
+    "min": 1,
+    "max": 10,
+    "step": 0.5,
+    "group": "Theming - Border"
+  },
+  "borderColor": {
+    "type": "colorpicker",
+    "label": "Border Color One",
+    "value": "#b0d",
+    "group": "Theming - Border"
+  },
+  "borderColorTwo": {
+    "type": "colorpicker",
+    "label": "Border Color Two",
+    "value": "#5c5cee",
+    "group": "Theming - Border"
+  },
+  "borderColorThree": {
+    "type": "colorpicker",
+    "label": "Border Color Three",
+    "value": "#00a6ff",
+    "group": "Theming - Border"
+  },
+  "borderAngle": {
+    "type": "number",
+    "label": "Border Angle",
+    "value": 0,
+    "group": "Theming - Border"
+  },
+  "borderWidth": {
+    "type": "number",
+    "label": "Enter a border width:",
+    "value": 8,
+    "group": "Theming - Border"
+  },
+  "borderRadius": {
+    "type": "number",
+    "label": "Enter a border radius:",
+    "value": 10,
+    "group": "Theming - Border"
+  },
+  "dividerColor": {
+    "type": "colorpicker",
+    "label": "Divider Color",
+    "value": "#b1b1b1",
+    "group": "Theming - Divider"
+  },
+  "dividerType": {
+    "type": "dropdown",
+    "label": "Choose a divider type:",
+    "value": "divide-solid",
+    "options": {
+      "divide-solid": "Solid Divider",
+      "divide-dashed": "Dashed Divider",
+      "divide-dotted": "Dotted Divider",
+      "divide-double": "Double Divider",
+      "divide-none": "No Divider"
+    },
+    "group": "Theming - Divider"
+  },
+  "dividerWidth": {
+    "type": "dropdown",
+    "label": "Choose a divider width:",
+    "value": "divide-y-2",
+    "options": {
+      "divide-y": "1px",
+      "divide-y-2": "2px",
+      "divide-y-4": "4px",
+      "divide-y-8": "8px"
+    },
+    "group": "Theming - Divider"
+  }
+}
