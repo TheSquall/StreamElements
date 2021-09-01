@@ -1,0 +1,32 @@
+<head>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"/>
+</head>
+
+<div class="event-dashboard text-left {{dividerWidth}} divider-color {{dividerType}} p-1 h-screen flex flex-col animated-box in animated-box-300" id="event-dashboard">
+  <!-- EVENT TITLE -->
+  <div class="flex-row">
+    <div class="title pb-0.5">Chat-Buys Amazon Stuff!</div>
+  </div>
+  
+  <!-- EVENT TOTALS -->
+  <div class="container py-0.5 flex-wrap flex-row">
+    <div class="total-title">Total to Spend:</div>
+    <div class="total-amount" id="total-counter">$0.00</div>
+    <div class="spent-title">Amount Spent:</div>
+    <div class="spent-amount" id="spent-counter">$0.00</div>
+    <div class="total-title">Amount Remaining:</div>
+    <div class="total-amount" id="remain-counter">$0.00</div>
+  </div>
+  
+  <div class="container py-0.5 flex-wrap flex-row hidden" id="poll">
+    <div class="title pb-0.5">Does Chat Buy?</div>
+    <div class="poll-label">!yes:</div>
+    <div class="poll-amount" id="poll-yes">0 (0.00%)</div>
+    <div class="poll-label">!no:</div>
+    <div class="poll-amount" id="poll-no">0 (0.00%)</div>
+    <div class="poll-label">!save:</div>
+    <div class="poll-amount" id="poll-save">0 (0.00%)</div>
+    <div class="timer-title">Time Remaining:</div>
+    <div class="timer-amount" id="poll-timer">0min 0sec</div>
+  </div>
+</div>
