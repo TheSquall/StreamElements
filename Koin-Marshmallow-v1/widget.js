@@ -156,7 +156,6 @@ window.addEventListener("onWidgetLoad", function (obj) {
   apiCounterGet().catch(e => {
     updateVariables();
   });
-  console.log(userState);
 });
 
 // EVENTS AFTER LOAD
