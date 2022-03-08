@@ -1,0 +1,371 @@
+{
+  "resetCommand": {
+    "type": "string",
+    "label": "Master Reset Command",
+    "value": "!marshmallowreset",
+    "group": "Commands"
+  },
+  "heartCommand": {
+    "type": "string",
+    "label": "Heart Update Command",
+    "value": "!heart",
+    "group": "Commands"
+  },
+  "starCommand": {
+    "type": "string",
+    "label": "Star Update Command",
+    "value": "!star",
+    "group": "Commands"
+  },
+  "horseshoeCommand": {
+    "type": "string",
+    "label": "Horseshoe Update Command",
+    "value": "!horseshoe",
+    "group": "Commands"
+  },
+  "cloverCommand": {
+    "type": "string",
+    "label": "Clover Update Command",
+    "value": "!clover",
+    "group": "Commands"
+  },
+  "moonCommand": {
+    "type": "string",
+    "label": "Blue Moon Update Command",
+    "value": "!moon",
+    "group": "Commands"
+  },
+  "goldCommand": {
+    "type": "string",
+    "label": "Pot of Gold Update Command",
+    "value": "!gold",
+    "group": "Commands"
+  },
+  "rainbowCommand": {
+    "type": "string",
+    "label": "Rainbow Update Command",
+    "value": "!rainbow",
+    "group": "Commands"
+  },
+  "balloonCommand": {
+    "type": "string",
+    "label": "Balloon Update Command",
+    "value": "!balloon",
+    "group": "Commands"
+  },
+  "heartImage": {
+    "type": "image-input",
+	"label": "Heart Image",
+	"group": "Images"
+  },
+  "starImage": {
+    "type": "image-input",
+	"label": "Star Image",
+	"group": "Images"
+  },
+  "horseshoeImage": {
+    "type": "image-input",
+	"label": "Horseshoe Image",
+	"group": "Images"
+  },
+  "cloverImage": {
+    "type": "image-input",
+	"label": "Clover Image",
+	"group": "Images"
+  },
+  "moonImage": {
+    "type": "image-input",
+	"label": "Blue Moon Image",
+	"group": "Images"
+  },
+  "goldImage": {
+    "type": "image-input",
+	"label": "Pot of Gold Image",
+	"group": "Images"
+  },
+  "rainbowImage": {
+    "type": "image-input",
+	"label": "Rainbow Image",
+	"group": "Images"
+  },
+  "balloonImage": {
+    "type": "image-input",
+	"label": "Balloon Image",
+	"group": "Images"
+  },
+  "heartString": {
+    "type": "text",
+    "label": "Heart",
+    "value": "",
+    "group": "Description - Empty for Blank"
+  },
+  "starString": {
+    "type": "text",
+    "label": "Star",
+    "value": "",
+    "group": "Description - Empty for Blank"
+  },
+  "horseshoeString": {
+    "type": "text",
+    "label": "Horseshoe",
+    "value": "",
+    "group": "Description - Empty for Blank"
+  },
+  "cloverString": {
+    "type": "text",
+    "label": "Clover",
+    "value": "",
+    "group": "Description - Empty for Blank"
+  },
+  "moonString": {
+    "type": "text",
+    "label": "Blue Moon",
+    "value": "",
+    "group": "Description - Empty for Blank"
+  },
+  "goldString": {
+    "type": "text",
+    "label": "Pot of Gold",
+    "value": "",
+    "group": "Description - Empty for Blank"
+  },
+  "rainbowString": {
+    "type": "text",
+    "label": "Rainbow",
+    "value": "",
+    "group": "Description - Empty for Blank"
+  },
+  "balloonString": {
+    "type": "text",
+    "label": "Red Balloon",
+    "value": "",
+    "group": "Description - Empty for Blank"
+  },
+  "dashboardBackgroundColor": {
+    "type": "colorpicker",
+    "label": "Background Color",
+    "value": "rgba(0, 0, 0, 0.5)",
+    "group": "Main Widget Options"
+  },
+  "fontFamily": {
+    "type": "googleFont",
+    "label": "Font",
+    "value": "Roboto",
+    "group": "Theming - Display"
+  },
+  "imageSize": {
+    "type": "number",
+    "label": "Image Height (px)",
+    "value": 40,
+	"min": 1,
+	"step": 1,
+    "group": "Theming - Display"
+  },
+  "counterFontSize": {
+    "type": "number",
+    "label": "Counter Font Size (px)",
+    "value": 40,
+	"min": 1,
+	"step": 1,
+    "group": "Theming - Display"
+  },
+  "counterColor": {
+    "type": "colorpicker",
+    "label": "Counter Color",
+    "value": "rgba(255, 255, 255, 1)",
+	"group": "Theming - Display"
+  },
+  "descriptionFontSize": {
+    "type": "number",
+    "label": "Description Font Size (px)",
+    "value": 20,
+	"min": 1,
+	"step": 1,
+    "group": "Theming - Display"
+  },
+  "descriptionColor": {
+    "type": "colorpicker",
+    "label": "Description Color",
+    "value": "rgba(255, 0, 0, 1)",
+	"group": "Theming - Display"
+  },
+  "itemSpacing": {
+    "type": "dropdown",
+    "label": "Spacing",
+    "value": "space-between",
+    "options": {
+      "left": "Left Align",
+      "right": "Right Align",
+      "center": "Center Align",
+      "space-between": "Space Between",
+      "space-around": "Space Around",
+      "space-evenly": "Space Evenly"
+    },
+    "group": "Theming - Display"
+  },
+  "itemPadding": {
+    "type": "number",
+    "label": "Extra Padding between Main Items (px)",
+    "value": 20,
+	"min": 1,
+	"step": 1,
+    "group": "Theming - Display"
+  },
+  "iconPadding": {
+    "type": "number",
+    "label": "Extra Padding between Icon and Text (px)",
+    "value": 10,
+	"min": 1,
+	"step": 1,
+    "group": "Theming - Display"
+  },
+  "dashboardTopMargin": {
+    "type": "number",
+    "label": "Border Top Margin",
+    "value": 20,
+    "step": 1,
+    "min": 0,
+    "group": "Theming - Border Margins"
+  },
+  "dashboardRightMargin": {
+    "type": "number",
+    "label": "Border Right Margin",
+    "value": 20,
+    "step": 1,
+    "min": 0,
+    "group": "Theming - Border Margins"
+  },
+  "dashboardBottomMargin": {
+    "type": "number",
+    "label": "Border Bottom Margin",
+    "value": 20,
+    "step": 1,
+    "min": 0,
+    "group": "Theming - Border Margins"
+  },
+  "dashboardLeftMargin": {
+    "type": "number",
+    "label": "Border Left Margin",
+    "value": 20,
+    "step": 1,
+    "min": 0,
+    "group": "Theming - Border Margins"
+  },
+  "borderColor": {
+    "type": "colorpicker",
+    "label": "Border Color",
+    "value": "rgb(255, 255, 255)",
+    "group": "Theming - Single-Color Border"
+  },
+  "borderWidth": {
+    "type": "number",
+    "label": "Border Thickness",
+    "value": 4,
+    "step": 0.25,
+    "min": 0,
+    "group": "Theming - Single-Color Border"
+  },
+  "borderRadius": {
+    "type": "number",
+    "label": "Border Radius (Corner Rounding)",
+    "value": 15,
+    "step": 1,
+    "min": 0,
+    "group": "Theming - Single-Color Border"
+  },
+  "borderType": {
+    "type": "dropdown",
+    "label": "Border Type",
+    "value": "solid",
+    "options": {
+      "solid": "Solid Border",
+      "dashed": "Dashed Border",
+      "dotted": "Dotted Border",
+      "double": "Double Border",
+      "none": "No Border"
+    },
+    "group": "Theming - Single-Color Border"
+  },
+  "useGradientBorder": {
+    "type": "dropdown",
+    "label": "Use Gradient Border?",
+    "value": "no",
+    "options": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "group": "Theming - Gradient Border"
+  },
+  "useAnimatedBorder": {
+    "type": "dropdown",
+    "label": "Animate Border?",
+    "value": "yes",
+    "options": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "group": "Theming - Gradient Border"
+  },
+  "animationDuration": {
+    "type": "slider",
+    "label": "Animate Duration (sec)",
+    "value": 4,
+    "min": 1,
+    "max": 10,
+    "step": 0.5,
+    "group": "Theming - Gradient Border"
+  },
+  "animatedBorderColor": {
+    "type": "colorpicker",
+    "label": "Border Color One",
+    "value": "rgb(255, 255, 255)",
+    "group": "Theming - Gradient Border"
+  },
+  "animatedBorderColorTwo": {
+    "type": "colorpicker",
+    "label": "Border Color Two",
+    "value": "rgb(248, 203, 248)",
+    "group": "Theming - Gradient Border"
+  },
+  "animatedBorderColorThree": {
+    "type": "colorpicker",
+    "label": "Border Color Three",
+    "value": "rgb(255, 0, 255)",
+    "group": "Theming - Gradient Border"
+  },
+  "animatedBorderAngle": {
+    "type": "number",
+    "label": "Border Angle",
+    "value": 0,
+    "step": 1,
+    "min": -180,
+    "max": 180,
+    "group": "Theming - Gradient Border"
+  },
+  "animatedBorderWidth": {
+    "type": "number",
+    "label": "Border Thickness",
+    "value": 4,
+    "step": 0.25,
+    "min": 0.25,
+    "group": "Theming - Gradient Border"
+  },
+  "animatedBorderRadius": {
+    "type": "number",
+    "label": "Border Radius (Corner Rounding)",
+    "value": 5,
+    "step": 1,
+    "min": 0,
+    "group": "Theming - Gradient Border"
+  },
+  "allowVIPS": {
+    "type": "dropdown",
+    "label": "Allow VIPs to use Commands",
+    "value": "no",
+    "options": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "group": "Miscellaneous"
+  }
+}
