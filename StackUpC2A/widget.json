@@ -1,0 +1,138 @@
+{
+  "minPerDollar": {
+    "type": "number",
+    "label": "+min per Dollar",
+    "value": 2,
+    "group": "Stack Up Config"
+  },
+  "stackupID": {
+    "type": "number",
+    "label": "Stack Up User Number",
+    "value": 5287,
+    "group": "Stack Up Config"
+  },
+  "updateSeconds": {
+    "type": "number",
+    "label": "API Check Interval (sec)",
+    "value": 30,
+    "group": "Stack Up Config"
+  },
+  "dashboardBackgroundColor": {
+    "type": "colorpicker",
+    "label": "Background Color",
+    "value": "rgba(0, 0, 0, 0.5)",
+    "group": "Theming"
+  },
+  "fontFamily": {
+    "type": "googleFont",
+    "label": "Font",
+    "value": "Roboto",
+    "group": "Theming"
+  },
+  "titleColor": {
+    "type": "colorpicker",
+    "label": "Title Color",
+    "value": "rgb(255, 255, 255)",
+    "group": "Theming"
+  },
+  "titleFontSize": {
+    "type": "number",
+    "label": "Title Font Size",
+    "value": 24,
+    "group": "Theming"
+  },
+  "counterColor": {
+    "type": "colorpicker",
+    "label": "Countdown Color",
+    "value": "rgb(255, 255, 255)",
+    "group": "Theming"
+  },
+  "counterFontSize": {
+    "type": "number",
+    "label": "Countdown Font Size",
+    "value": 24,
+    "group": "Theming"
+  },
+  "fontSize": {
+    "type": "number",
+    "label": "End Time Font Size",
+    "value": 16,
+    "group": "Theming"
+  },
+  "animationDuration": {
+    "type": "slider",
+    "label": "Animate Duration (sec)",
+    "value": 4,
+    "min": 1,
+    "max": 10,
+    "step": 0.5,
+    "group": "Theming - Border"
+  },
+  "animatedBorderColor": {
+    "type": "colorpicker",
+    "label": "Border Color One",
+    "value": "rgb(255, 255, 255)",
+    "group": "Theming - Border"
+  },
+  "animatedBorderColorTwo": {
+    "type": "colorpicker",
+    "label": "Border Color Two",
+    "value": "rgb(248, 203, 248)",
+    "group": "Theming - Border"
+  },
+  "animatedBorderColorThree": {
+    "type": "colorpicker",
+    "label": "Border Color Three",
+    "value": "rgb(255, 0, 255)",
+    "group": "Theming - Border"
+  },
+  "animatedBorderAngle": {
+    "type": "number",
+    "label": "Border Angle",
+    "value": 0,
+    "group": "Theming - Border"
+  },
+  "animatedBorderWidth": {
+    "type": "number",
+    "label": "Enter a border width:",
+    "value": 10,
+    "group": "Theming - Border"
+  },
+  "animatedBorderRadius": {
+    "type": "number",
+    "label": "Enter a border radius:",
+    "value": 5,
+    "group": "Theming - Border"
+  },
+  "dividerColor": {
+    "type": "colorpicker",
+    "label": "Divider Color",
+    "value": "rgba(255, 255, 255, 1)",
+    "group": "Theming - Divider"
+  },
+  "dividerType": {
+    "type": "dropdown",
+    "label": "Choose a divider type:",
+    "value": "divide-dashed",
+    "options": {
+      "divide-solid": "Solid Divider",
+      "divide-dashed": "Dashed Divider",
+      "divide-dotted": "Dotted Divider",
+      "divide-double": "Double Divider",
+      "divide-none": "No Divider"
+    },
+    "group": "Theming - Divider"
+  },
+  "dividerWidth": {
+    "type": "dropdown",
+    "label": "Choose a divider width:",
+    "value": "divide-y",
+    "options": {
+      "divide-y": "1px",
+      "divide-y-2": "2px",
+      "divide-y-4": "4px",
+      "divide-y-8": "8px"
+    },
+    "group": "Theming - Divider"
+  }
+}
